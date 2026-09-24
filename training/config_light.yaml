@@ -1,0 +1,64 @@
+# Light detection training on the workshop dummy dataset.
+# Image sizes are [height, width], so this trains at 320x512 (landscape).
+
+version: 0.5.0
+rich_logging: False
+
+model:
+  name: workshop_dummy_detection_light
+  predefined_model:
+    name: DetectionModel
+    variant: light
+    params:
+      loss_params:
+        iou_type: siou
+        iou_loss_weight: 20
+        class_loss_weight: 8
+
+loader:
+  train_view: [train]
+  val_view: [val]
+  test_view: [test]
+  params:
+    dataset_name: coco-validation-dummy-training
+
+tracker:
+  save_directory: output/light
+
+trainer:
+  precision: 16-mixed
+  preprocessing:
+    train_image_size: [320, 512]
+    keep_aspect_ratio: true
+    normalize:
+      active: true
+      params:
+        mean: [0.0, 0.0, 0.0]
+        std: [1.0, 1.0, 1.0]
+
+  batch_size: 8
+  epochs: 300
+  accumulate_grad_batches: 8
+  n_workers: 4
+  validation_interval: 10
+  n_log_images: 8
+
+  callbacks:
+    - name: EMACallback
+      params:
+        decay: 0.9999
+        use_dynamic_decay: true
+        decay_tau: 2000
+    - name: ConvertOnTrainEnd
+
+  training_strategy:
+    name: TripleLRSGDStrategy
+    params:
+      warmup_epochs: 2
+      warmup_bias_lr: 0.05
+      warmup_momentum: 0.5
+      lr: 0.0032
+      lre: 0.000384
+      momentum: 0.843
+      weight_decay: 0.00036
+      nesterov: true

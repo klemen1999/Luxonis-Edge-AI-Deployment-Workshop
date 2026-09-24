@@ -1,0 +1,33 @@
+runtime:
+  nn_archive_params_override: false
+
+pipeline:
+  loader:
+    name: LuxonisLoader
+    preprocessing:
+      keep_aspect_ratio: true
+    params:
+      dataset_name: coco-validation-all-classes
+      view:
+      - test
+      seed: 42
+
+  engine:
+    name: onnx
+    model_path: ../conversion/baseline_onnx/yolov8l.onnx.tar.xz
+    params:
+      providers:
+      - CPUExecutionProvider
+
+  evaluators:
+  - task_name: ''
+    parser:
+      name: YOLOExtendedParser
+      params:
+        conf_threshold: 0.001
+        iou_threshold: 0.7
+        max_det: 300
+    metrics:
+    - name: BboxMeanAveragePrecision
+      params:
+        iou_type: bbox

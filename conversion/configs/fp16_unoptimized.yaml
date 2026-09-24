@@ -1,0 +1,12 @@
+name: fp16_unoptimized
+
+encoding:
+  from: RGB
+  to: BGR
+
+onnx_optimizations: false
+onnx_simplification: false
+keep_intermediate_outputs: true
+
+rvc4:
+  quantization_mode: FP16_STANDARD

@@ -1,0 +1,13 @@
+name: int8_per_channel
+
+onnx_optimizations: true
+onnx_simplification: onnxsim
+keep_intermediate_outputs: true
+
+calibration:
+  path: ../calibration_640
+  resize_method: PAD
+
+rvc4:
+  quantization_mode: INT8_STANDARD
+  use_per_channel_quantization: true

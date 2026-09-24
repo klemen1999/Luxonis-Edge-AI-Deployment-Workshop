@@ -1,0 +1,40 @@
+runtime:
+  nn_archive_params_override: false
+
+pipeline:
+  loader:
+    name: LuxonisLoader
+    preprocessing:
+      keep_aspect_ratio: true
+    params:
+      dataset_name: coco-validation-visualization
+      view:
+      - test
+      seed: 42
+
+  engine:
+    name: depthai
+    model_path: ../conversion/output/int8_per_channel/yolov8l.rvc4.tar.xz
+    params:
+      device_ip: 192.168.68.110
+
+  evaluators:
+  - task_name: ''
+    parser:
+      name: YOLOExtendedParser
+      params:
+        conf_threshold: 0.25
+        iou_threshold: 0.7
+        max_det: 300
+    metrics:
+    - name: BboxMeanAveragePrecision
+      params:
+        iou_type: bbox
+    visualizers:
+    - name: BBoxVisualizer
+      display: false
+      save: true
+      save_dir: output/int8_per_channel/visualizations
+      params:
+        draw_scores: true
+        width: 2

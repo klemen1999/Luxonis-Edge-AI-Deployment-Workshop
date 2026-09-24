@@ -1,0 +1,186 @@
+{
+  "dataset": "coco-validation-all-classes",
+  "split": "test",
+  "image_count": 300,
+  "conf_threshold": 0.001,
+  "iou_threshold": 0.7,
+  "max_det": 300,
+  "metric_scale": "AP and AR values are fractions (0\u20131).",
+  "results": [
+    {
+      "variant": "baseline_onnx",
+      "source": "baseline_onnx/result.json",
+      "engine": "onnx",
+      "model_name": "yolov8l.onnx",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5947070623242802,
+            "AP50": 0.7403345438537923,
+            "AP75": 0.6495752100962494,
+            "AP_small": 0.3640184811731046,
+            "AP_medium": 0.5648390059823758,
+            "AP_large": 0.7390929499668223,
+            "AR1": 0.46009899976113355,
+            "AR10": 0.6762576127948859,
+            "AR100": 0.7214277879254486,
+            "AR_small": 0.49058697191934997,
+            "AR_medium": 0.7046484392940771,
+            "AR_large": 0.8371717941100949
+          }
+        }
+      ]
+    },
+    {
+      "variant": "fp16_unoptimized",
+      "source": "fp16_unoptimized/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5942594339737391,
+            "AP50": 0.7382626347503709,
+            "AP75": 0.6497704802416178,
+            "AP_small": 0.36249711238754817,
+            "AP_medium": 0.5634879094759343,
+            "AP_large": 0.7364536199053526,
+            "AR1": 0.460454460407839,
+            "AR10": 0.6703347315789346,
+            "AR100": 0.7106477827349765,
+            "AR_small": 0.4830417342984837,
+            "AR_medium": 0.6930757567182431,
+            "AR_large": 0.8193572397560476
+          }
+        }
+      ]
+    },
+    {
+      "variant": "fp16_optimized",
+      "source": "fp16_optimized/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5944958315654426,
+            "AP50": 0.7383231382585789,
+            "AP75": 0.6497821308078607,
+            "AP_small": 0.36225409521925456,
+            "AP_medium": 0.5643017690597041,
+            "AP_large": 0.7364785677158745,
+            "AR1": 0.46047032083607053,
+            "AR10": 0.6706303907778133,
+            "AR100": 0.7109434419338553,
+            "AR_small": 0.4828048335181047,
+            "AR_medium": 0.694138166089476,
+            "AR_large": 0.819370220868529
+          }
+        }
+      ]
+    },
+    {
+      "variant": "int8_per_tensor",
+      "source": "int8_per_tensor/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5619091969089549,
+            "AP50": 0.7050873463321752,
+            "AP75": 0.610892781583556,
+            "AP_small": 0.3490021861841461,
+            "AP_medium": 0.5124990165227499,
+            "AP_large": 0.7200470642623731,
+            "AR1": 0.4326781053090516,
+            "AR10": 0.6375336259273812,
+            "AR100": 0.6648571567280313,
+            "AR_small": 0.4375221104238008,
+            "AR_medium": 0.6174975365682237,
+            "AR_large": 0.7989762532762594
+          }
+        }
+      ]
+    },
+    {
+      "variant": "int8_per_channel",
+      "source": "int8_per_channel/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5684253255449225,
+            "AP50": 0.715259466515501,
+            "AP75": 0.6221972907451645,
+            "AP_small": 0.34777367751477795,
+            "AP_medium": 0.5271560289865894,
+            "AP_large": 0.7179775313904215,
+            "AR1": 0.44638807013415555,
+            "AR10": 0.6417580843845946,
+            "AR100": 0.6683974780184596,
+            "AR_small": 0.44231437039356003,
+            "AR_medium": 0.6306286875799976,
+            "AR_large": 0.7894765505119392
+          }
+        }
+      ]
+    },
+    {
+      "variant": "int8_int16",
+      "source": "int8_int16/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.5892064117284203,
+            "AP50": 0.7360670158509142,
+            "AP75": 0.6408599969260453,
+            "AP_small": 0.35517878003285613,
+            "AP_medium": 0.5592384332652126,
+            "AP_large": 0.7414941883318367,
+            "AR1": 0.46026553161378536,
+            "AR10": 0.6726361716125357,
+            "AR100": 0.7165331640808147,
+            "AR_small": 0.48403396021268846,
+            "AR_medium": 0.7023073258592908,
+            "AR_large": 0.8343934775644568
+          }
+        }
+      ]
+    },
+    {
+      "variant": "int8_wrong_calibration",
+      "source": "int8_wrong_calibration/result.json",
+      "engine": "depthai",
+      "model_name": "yolov8l",
+      "metrics": [
+        {
+          "name": "BboxMeanAveragePrecision",
+          "values": {
+            "AP": 0.0,
+            "AP50": 0.0,
+            "AP75": 0.0,
+            "AP_small": 0.0,
+            "AP_medium": 0.0,
+            "AP_large": 0.0,
+            "AR1": 0.0,
+            "AR10": 0.0,
+            "AR100": 0.0,
+            "AR_small": 0.0,
+            "AR_medium": 0.0,
+            "AR_large": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

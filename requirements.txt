@@ -1,0 +1,8 @@
+modelconv==0.6.1
+fiftyone==1.22.0
+luxonis-eval @ git+https://github.com/luxonis/luxonis-eval.git@v0.1.0-alpha
+
+# Pin together to avoid pip backtracking through boto3 releases.
+boto3==1.35.93
+botocore==1.35.93
+aiobotocore==2.17.0

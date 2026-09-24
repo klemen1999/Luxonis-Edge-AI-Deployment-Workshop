@@ -1,0 +1,2 @@
+luxonis-train==0.5.0
+luxonis-ml==0.10.0

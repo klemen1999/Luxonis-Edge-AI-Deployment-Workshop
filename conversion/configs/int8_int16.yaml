@@ -1,0 +1,9 @@
+name: int8_int16
+
+calibration:
+  path: ../calibration_640
+  max_images: 200
+  resize_method: PAD
+
+rvc4:
+  quantization_mode: INT8_INT16_MIXED

@@ -1,0 +1,11 @@
+# Reference overrides for the NNArchive command in ../README.md.
+
+onnx_optimizations: true
+onnx_simplification: onnxsim
+keep_intermediate_outputs: true
+
+# No calibration block: use ModelConverter random calibration defaults.
+
+rvc4:
+  quantization_mode: INT8_STANDARD
+  use_per_channel_quantization: true

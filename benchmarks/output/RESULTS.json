@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "model_family": "YOLOv8l",
+  "common_settings": {
+    "profile": "balanced",
+    "runtime": "dsp",
+    "benchmark_time (s)": 30,
+    "num_threads": 2,
+    "num_messages": 50,
+    "device_ip": "192.168.68.110"
+  },
+  "backend": "DepthAI (documented benchmark commands)",
+  "device_monitor": true,
+  "notes": [
+    "Collected from the existing CSVs; benchmarks were not rerun.",
+    "Each model has one recorded benchmark run. No independent-trial averaging or uncertainty estimate is available.",
+    "FPS is throughput; latency is the reported mean in milliseconds for a concurrent workload and need not equal 1000 / FPS.",
+    "The five selected device-monitor values are preserved as reported. Power channels are separate hardware readings; they are not summed.",
+    "Benchmark performance does not measure detection accuracy."
+  ],
+  "units": {
+    "fps": "frames/s",
+    "latency": "ms",
+    "power_system": "W",
+    "power_processor": "W",
+    "ram_used": "MiB",
+    "cpu_utilization": "%",
+    "dsp_utilization": "%"
+  },
+  "results": [
+    {
+      "model": "fp16_unoptimized",
+      "source_csv": "fp16_unoptimized/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "d785e24c320fc641b306fc74ac5620025a3c5db6c3891f0b50f4a5c361f1d28a",
+      "source_log": "fp16_unoptimized/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 33.75592975616455,
+        "latency": 57.66927130264447,
+        "power_system": 6.417072,
+        "power_processor": 6.9600159999999995,
+        "ram_used": 1196.41796875,
+        "dsp_utilization": 74.08951804925353,
+        "cpu_utilization": 16.750619137832288
+      }
+    },
+    {
+      "model": "fp16_optimized",
+      "source_csv": "fp16_optimized/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "2c6a34b4ca708caf9cbe69e9baca3908c32fa50ea0e4790614d1c9019eda6c9e",
+      "source_log": "fp16_optimized/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 39.907501856486,
+        "latency": 48.34636437908497,
+        "power_system": 7.2433760000000005,
+        "power_processor": 7.804784000000001,
+        "ram_used": 1200.2096354166667,
+        "dsp_utilization": 74.06958897247715,
+        "cpu_utilization": 17.588540403092015
+      }
+    },
+    {
+      "model": "int8_per_tensor",
+      "source_csv": "int8_per_tensor/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "d1f20507da00074f1b5bd5479ae48ee05c5dc0ff639ed32e490267858b70a682",
+      "source_log": "int8_per_tensor/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 107.95869588851929,
+        "latency": 17.108132618683,
+        "power_system": 4.95648,
+        "power_processor": 5.193376,
+        "ram_used": 991.5598958333334,
+        "dsp_utilization": 73.98237440419429,
+        "cpu_utilization": 21.293802284815452
+      }
+    },
+    {
+      "model": "int8_per_channel",
+      "source_csv": "int8_per_channel/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "92bafb2ab08da1500295a71533c89e69b685d171230aae90be0224e790a01942",
+      "source_log": "int8_per_channel/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 105.77435678149027,
+        "latency": 17.18524199066874,
+        "power_system": 5.286256,
+        "power_processor": 6.168863999999999,
+        "ram_used": 996,
+        "dsp_utilization": 73.60071029274852,
+        "cpu_utilization": 21.583828914351976
+      }
+    },
+    {
+      "model": "int8_int16",
+      "source_csv": "int8_int16/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "456ccc693db09086e33c779a84761ed1e252bd7970050982284d468ec4e12d23",
+      "source_log": "int8_int16/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 46.528919628688264,
+        "latency": 41.48608327501749,
+        "power_system": 5.8423359999999995,
+        "power_processor": 5.984559999999999,
+        "ram_used": 1046.7161458333333,
+        "dsp_utilization": 74.45631067656807,
+        "cpu_utilization": 18.55657744685295
+      }
+    },
+    {
+      "model": "int8_wrong_calibration",
+      "source_csv": "int8_wrong_calibration/yolov8l.rvc4.tar_benchmark_results.csv",
+      "source_csv_sha256": "b38888300201b207681c658a75f709b90633d6de5f5090ee085d1805ae65529e",
+      "source_log": "int8_wrong_calibration/benchmark.log",
+      "values": {
+        "profile": "balanced",
+        "runtime": "dsp",
+        "benchmark_time (s)": 30,
+        "num_threads": 2,
+        "num_messages": 50,
+        "device_ip": "192.168.68.110",
+        "fps": 104.14067336051694,
+        "latency": 17.496830910240202,
+        "power_system": 6.167632,
+        "power_processor": 6.506816,
+        "ram_used": 1003.0989583333334,
+        "dsp_utilization": 73.8259192330903,
+        "cpu_utilization": 21.498588509549414
+      }
+    }
+  ],
+  "display_labels": {
+    "power_system": "power_sys (W)",
+    "power_processor": "power_core (W)",
+    "dsp_utilization": "dsp (%)",
+    "ram_used": "memory (MiB)",
+    "cpu_utilization": "cpu (%)"
+  }
+}
