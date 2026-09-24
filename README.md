@@ -19,7 +19,7 @@ details for that stage.
 | 2 | [Training](training/README.md) | Inspect the data, train a light or heavy detector with Luxonis Train, review metrics, and export a checkpoint. |
 | 3 | [Conversion](conversion/README.md) | Convert the supplied Ultralytics YOLOv8L (640 × 640) ONNX NNArchive into six RVC4 variants: two FP16 configurations, INT8 per-tensor, INT8 per-channel, W8A16, and INT8 with intentionally bad calibration. |
 | 4 | [Evaluation](eval/README.md) | Compare the CPU ONNX baseline with converted models on the device, measure detection accuracy, and inspect prediction visualizations. |
-| 5 | [Layer analysis](analysis/README.md) | Compare layer outputs and cycle counts for selected variants to locate numerical differences and expensive operations. |
+| 5 | [Layer analysis](analysis/README.md) | Compare layer outputs and cycle counts for all six variants to locate numerical differences and expensive operations. |
 | 6 | [Benchmarking](benchmarks/README.md) | Measure device throughput, latency, and telemetry under consistent settings, then compare the performance and accuracy tradeoffs. |
 
 The training stage is a separate workflow demonstration using predefined
@@ -91,30 +91,15 @@ python data/prepare_workshop_datasets.py
 
 ### 5. Prepare device access and analysis tools
 
-Replace the example device addresses in commands and configs with your device's
-address and verify passwordless root SSH access. Run device jobs sequentially
-so only one job uses the device at a time.
+Replace the example device addresses in commands and configs with your RVC4's
+address. Verify passwordless root SSH access and run device jobs sequentially.
 
-**Optional: regenerate the analyses.** You can download the prepared analysis
-results and HTML plots from the [workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing)
-and place them under `analysis/output/`. Viewing these supplied results does not
-require SNPE tools or rerunning analysis.
-
-Only if you run `modelconverter analyze` yourself, you need `snpe-dlc-info` and
-`snpe-diagview` on `PATH`. The included
-[SNPE wrappers](tools/snpe/README.md) run those tools in the pinned ModelConverter
-Docker image (SNPE 2.41). From the workshop root, enable them in your shell:
-
-```bash
-export PATH="$PWD/tools/snpe:$PATH"
-```
-
-Docker must be running and accessible to your user. The first invocation may
-pull the container image. Run analysis from within the workshop directory.
-
-Run each stage from its own folder, as specified in its README. The analysis
-and benchmark commands enter per-variant output directories; create those
-directories before running the commands on a fresh checkout.
+Layer analysis is optional: use the supplied reports under `analysis/output/`,
+or follow the [analysis setup and commands](analysis/README.md#setup-before-running-analysis)
+to regenerate them. Regeneration requires the converted DLCs, matching modified
+ONNX files, visualization images, and SNPE tools on the host and device. The
+included [Docker wrappers](tools/snpe/README.md) provide the host tools without
+a native SNPE installation.
 
 ### 6. Create a separate environment for training
 

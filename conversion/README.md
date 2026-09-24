@@ -69,3 +69,40 @@ modelconverter convert rvc4 --path "baseline_onnx/yolov8l.onnx.tar.xz" --output-
 ```bash
 modelconverter convert rvc4 --path "baseline_onnx/yolov8l.onnx.tar.xz" --output-dir "int8_wrong_calibration" rvc4.quantization_mode INT8_STANDARD rvc4.use_per_channel_quantization True onnx_optimizations True onnx_simplification onnxsim keep_intermediate_outputs True
 ```
+
+## Direct SNPE commands (reference)
+
+This INT8 per-channel example shows the SNPE commands ModelConverter runs:
+ONNX → DLC, calibration/quantization, then HTP graph preparation for `sm8550`.
+
+They run **inside the ModelConverter Docker container** with SNPE 2.41.0
+configured; `/app/output/...` paths are container paths. ModelConverter prepares
+the modified ONNX (including preprocessing) and the calibration input list/raw
+files beforehand. Those calibration files may be removed after conversion and
+must exist to replay these commands. Packaging the final DLC into an NNArchive
+is a separate ModelConverter step.
+
+Source: [conversion log](output/int8_per_channel/modelconverter.log).
+
+```bash
+snpe-onnx-to-dlc -i /app/output/int8_per_channel/intermediate_outputs/yolov8l-simplified-modified.onnx \
+  --input_dim images 1,3,640,640 \
+  --input_dtype images float32 \
+  --out_name output1_yolov6r2 \
+  --out_name output2_yolov6r2 \
+  --out_name output3_yolov6r2 \
+  --input_layout images NCHW
+
+snpe-dlc-quant \
+  --input_list /app/output/int8_per_channel/intermediate_outputs/img_list.txt \
+  --input_dlc /app/output/int8_per_channel/intermediate_outputs/yolov8l-simplified-modified.dlc \
+  --output_dlc /app/output/int8_per_channel/intermediate_outputs/yolov8l-simplified-modified-quantized.dlc \
+  --use_per_channel_quantization
+
+snpe-dlc-graph-prepare \
+  --input_dlc /app/output/int8_per_channel/intermediate_outputs/yolov8l-simplified-modified-quantized.dlc \
+  --output_dlc /app/output/int8_per_channel/yolov8l.dlc \
+  --set_output_tensors output1_yolov6r2,output2_yolov6r2,output3_yolov6r2 \
+  --optimization_level 2 \
+  --htp_socs sm8550
+```
