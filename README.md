@@ -106,3 +106,6 @@ links to individual run artifacts. The results
 summaries remain eligible for version control. Benchmark results are single-run
 measurements, so treat them as workshop observations rather than repeated-trial
 averages.
+
+Generate an accuracy–throughput Pareto plot from the result summaries with
+[the plotting tool](tools/README.md). It exports PNG and CSV files.
