@@ -49,4 +49,8 @@ Thumbs.db
 !/eval/output/RESULTS.json
 !/benchmarks/output/RESULTS.md
 !/benchmarks/output/RESULTS.json
+
+# Published Pareto plot and its source values
+!/tools/output/pareto_fps_map.png
+!/tools/output/pareto_fps_map.csv
 *.log
