@@ -1,11 +1,24 @@
 # Model analysis
 
+Running the analyses is optional. Download the prepared analysis results and HTML
+plots from the [workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing)
+and place them under `analysis/output/` to use the [results](output/RESULTS.md)
+and interactive views directly. SNPE tools are only needed to regenerate the
+analyses, not to view supplied plots or run `modelconverter visualize` on supplied CSVs.
+
 Analyze the FP16 unoptimized, FP16 optimized and INT8 per-channel YOLOv8l conversions using the 10 images in
 `../data/coco-validation-visualization/test/images`. 
 
 Run the commands from `analysis` folder using the defined virtual environment.
 Inference runs on the device over SSH.
 Run commands sequentially, with no other pipeline using the device.
+
+If regenerating the analyses, enable the [SNPE wrappers](../tools/snpe/README.md)
+from this `analysis` folder. Docker must be running and accessible:
+
+```bash
+export PATH="$(cd ../tools/snpe && pwd):$PATH"
+```
 
 Both layer output comparison and layer timing analysis are enabled. Each DLC is
 paired with its conversion's **modified ONNX**, including embedded preprocessing.

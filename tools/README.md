@@ -26,3 +26,9 @@ python plot_pareto.py --eval-results /path/to/eval/RESULTS.json \
   --benchmark-results /path/to/benchmarks/RESULTS.json \
   --output-dir /path/to/plots
 ```
+
+## Optional SNPE inspection tools
+
+The [SNPE wrappers](snpe/README.md) provide `snpe-dlc-info` and `snpe-diagview`
+through Docker when regenerating model analyses. Skip this setup if using the
+prepared analyses from Google Drive; see the [analysis instructions](../analysis/README.md).

@@ -37,35 +37,41 @@ is not an independent test set for the demo's trained models.
 
 ## Before you begin
 
-Download the additional material from the
-[workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing):
+Follow these setup steps in order. The **workshop root** is the folder containing
+this README (`workskop_material/`).
 
-1. Clone or download this repository, then download the required assets from Drive.
-2. Extract any downloaded ZIP archives and merge their contents into the workshop
-   root (the folder containing this README). Match the existing `data/`,
-   `conversion/`, `eval/`, `analysis/`, and `benchmarks/` folders; if an archive
-   has an enclosing folder, copy its contents rather than nesting that folder.
-3. Check that the baseline is at
-   `conversion/baseline_onnx/yolov8l.onnx.tar.xz`. Keep this NNArchive compressed;
-   the conversion commands use it directly. Place any supplied run outputs in
-   the corresponding stage's `output/` folder.
-4. For downloaded datasets, follow the local registration instructions in the
-   [data README](data/README.md), or regenerate them with its preparation script.
+### 1. Check prerequisites
 
-- Create a Python environment using [requirements.txt](requirements.txt) for
-  data preparation and the deployment experiments. Training uses a separate
-  environment with [training/requirements-train.txt](training/requirements-train.txt).
-- Have Docker available for conversion and an accessible RVC4 device for
-  on-device evaluation, analysis, and benchmarks. A CUDA-capable GPU is
-  recommended for the training demo.
-- Obtain the workshop baseline NNArchive and place it at
-  `conversion/baseline_onnx/yolov8l.onnx.tar.xz`. Model binaries are excluded
-  from Git and must be supplied separately.
-- Replace example device addresses with your device's address. Layer analysis
-  uses SSH; benchmark telemetry requires ADB or passwordless root SSH access.
-  Run device jobs sequentially so only one job uses the device at a time.
+| Requirement | Purpose |
+| --- | --- |
+| Python 3 with pip and venv support | Run the workshop tools. The recorded runs used Python 3.10. |
+| Git | Clone the repository and install LuxonisEval from its repository. |
+| Docker | Run model conversion and, optionally, the SNPE tool wrappers when regenerating analyses. |
+| OpenSSH client (`ssh` and `scp`) | Access the device over the network. |
+| Accessible RVC4 device with passwordless root SSH | Run on-device evaluation, analysis, and benchmark monitoring. |
+| Internet access | Download dependencies, Docker images, and datasets; load Plotly when opening analysis HTML plots. |
+| Graphical desktop, for interactive inspection | Use the dataset viewer. Saved evaluation visualizations and the Pareto plot can be generated headlessly. |
+| CUDA-capable GPU, recommended for training | Accelerate the separate training demo. |
 
-From the workshop root (the folder containing this README), set up the main environment:
+### 2. Download the repository and workshop assets
+
+Clone or download this repository, then download the additional material from the
+[workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing).
+
+Extract downloaded ZIP archives and merge their contents into the workshop root.
+Match the existing `data/`, `conversion/`, `eval/`, `analysis/`, and `benchmarks/`
+folders. If an archive has an enclosing folder, copy its contents rather than
+nesting that folder. Place supplied run outputs in the corresponding stage's
+`output/` folder.
+
+Check that the baseline is at `conversion/baseline_onnx/yolov8l.onnx.tar.xz`.
+Keep this NNArchive compressed; conversion commands use it directly. Model
+binaries are excluded from Git and must be supplied separately.
+
+### 3. Create the main Python environment
+
+From the workshop root, install [requirements.txt](requirements.txt) for data
+preparation and the deployment experiments:
 
 ```bash
 python3 -m venv env
@@ -73,11 +79,48 @@ source env/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-If you are generating the datasets instead of importing the downloaded exports,
-run `python data/prepare_workshop_datasets.py` in this environment.
+### 4. Register or generate the datasets
 
-Run each later stage from its own folder, as specified in its README. To set up
-the separate training environment, start from `workskop_material/`:
+For downloaded datasets, follow the local registration instructions in the
+[data README](data/README.md). To generate them instead, run this from the
+workshop root with the main environment active:
+
+```bash
+python data/prepare_workshop_datasets.py
+```
+
+### 5. Prepare device access and analysis tools
+
+Replace the example device addresses in commands and configs with your device's
+address and verify passwordless root SSH access. Run device jobs sequentially
+so only one job uses the device at a time.
+
+**Optional: regenerate the analyses.** You can download the prepared analysis
+results and HTML plots from the [workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing)
+and place them under `analysis/output/`. Viewing these supplied results does not
+require SNPE tools or rerunning analysis.
+
+Only if you run `modelconverter analyze` yourself, you need `snpe-dlc-info` and
+`snpe-diagview` on `PATH`. The included
+[SNPE wrappers](tools/snpe/README.md) run those tools in the pinned ModelConverter
+Docker image (SNPE 2.41). From the workshop root, enable them in your shell:
+
+```bash
+export PATH="$PWD/tools/snpe:$PATH"
+```
+
+Docker must be running and accessible to your user. The first invocation may
+pull the container image. Run analysis from within the workshop directory.
+
+Run each stage from its own folder, as specified in its README. The analysis
+and benchmark commands enter per-variant output directories; create those
+directories before running the commands on a fresh checkout.
+
+### 6. Create a separate environment for training
+
+If following the training stage, start from the workshop root with the main
+environment active, then install
+[training/requirements-train.txt](training/requirements-train.txt):
 
 ```bash
 deactivate
@@ -87,9 +130,8 @@ python -m pip install -r training/requirements-train.txt
 cd training
 ```
 
-Switch back to the main environment for stages 3–6. The analysis and benchmark
-commands enter per-variant output directories; create those directories before
-running the commands on a fresh checkout.
+Switch back to the main environment for the deployment stages (steps 3–6 in
+the workshop roadmap).
 
 ## Reading the results
 

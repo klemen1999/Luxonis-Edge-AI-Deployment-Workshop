@@ -1,4 +1,4 @@
-modelconv==0.6.1
+modelconv[bench,analysis]==0.6.1
 fiftyone==1.22.0
 luxonis-eval @ git+https://github.com/luxonis/luxonis-eval.git@v0.1.0-alpha
 
