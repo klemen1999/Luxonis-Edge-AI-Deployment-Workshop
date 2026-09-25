@@ -27,6 +27,13 @@ python plot_pareto.py --eval-results /path/to/eval/RESULTS.json \
   --output-dir /path/to/plots
 ```
 
+## Live YOLO demo
+
+[`live_demo/main.py`](live_demo/main.py) runs a local YOLO NN archive on an OAK
+camera, showing detections and FPS with adjustable confidence and IoU thresholds.
+Use `-m` to specify the archive and optionally `-d` to select a device by IP.
+See the [live demo README](live_demo/README.md) for setup, usage, and keyboard controls.
+
 ## Optional SNPE inspection tools
 
 The [SNPE wrappers](snpe/README.md) provide `snpe-dlc-info` and `snpe-diagview`
