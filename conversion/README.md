@@ -1,5 +1,9 @@
 # Conversion commands
 
+Extract `workshop-inputs.zip` into the workshop root before running conversion.
+It supplies `baseline_onnx/yolov8l.onnx.tar.xz` relative to this folder; the
+baseline is not tracked in Git. Keep the NNArchive compressed.
+
 Run the commands from `conversion` folder using the defined virtual environment.
 
 The supplied baseline is an **Ultralytics YOLOv8L model with a 640 × 640 input

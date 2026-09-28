@@ -2,7 +2,6 @@
 # Image sizes are [height, width], so this trains at 320x512 (landscape).
 
 version: 0.5.0
-rich_logging: False
 
 model:
   name: workshop_dummy_detection_light

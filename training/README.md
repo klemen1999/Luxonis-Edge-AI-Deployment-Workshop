@@ -44,13 +44,12 @@ luxonis_ml data inspect coco-validation-dummy-training --view test
 Generate class-distribution and annotation-health reports for each split:
 
 ```bash
-luxonis_ml data health coco-validation-dummy-training --view train --save-dir output/data-health/train
-luxonis_ml data health coco-validation-dummy-training --view val --save-dir output/data-health/val
-luxonis_ml data health coco-validation-dummy-training --view test --save-dir output/data-health/test
+luxonis_ml data health coco-validation-dummy-training --view train
+luxonis_ml data health coco-validation-dummy-training --view val
+luxonis_ml data health coco-validation-dummy-training --view test
 ```
 
 The inspect commands open an interactive viewer and need a graphical session.
-Health plots are saved to the specified folders.
 
 ## Choose a configuration
 

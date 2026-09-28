@@ -58,15 +58,29 @@ this README (`workskop_material/`).
 Clone or download this repository, then download the additional material from the
 [workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing).
 
-Extract downloaded ZIP archives and merge their contents into the workshop root.
-Match the existing `data/`, `conversion/`, `eval/`, `analysis/`, and `benchmarks/`
-folders. If an archive has an enclosing folder, copy its contents rather than
-nesting that folder. Reference runs are included in each stage's `output_done/` folder.
-Place downloaded conversion artifacts in `conversion/output/`.
+Extract `workshop-results.zip` into the **workshop root** (the folder containing
+this README). It contains only `conversion/output/`, so the converted models
+and intermediate files land in the paths used by the workshop commands:
+
+```bash
+# Run from the workshop root; adjust the ZIP path to its download location.
+unzip /path/to/workshop-results.zip -d .
+```
+
+Extract `workshop-inputs.zip` into the same workshop root. It supplies `data/`
+and `conversion/baseline_onnx/yolov8l.onnx.tar.xz`. The baseline model is
+distributed in this ZIP, not tracked in Git:
+
+```bash
+unzip /path/to/workshop-inputs.zip -d .
+```
 
 Check that the baseline is at `conversion/baseline_onnx/yolov8l.onnx.tar.xz`.
-Keep this NNArchive compressed; conversion commands use it directly. Model
-binaries are excluded from Git and must be supplied separately.
+Keep this NNArchive compressed; conversion commands use it directly.
+
+Reference analysis, evaluation, benchmark, and plotting results are already
+included in the repository's `output_done/` folders; they are not in
+`workshop-results.zip`.
 
 ### 3. Create the main Python environment
 

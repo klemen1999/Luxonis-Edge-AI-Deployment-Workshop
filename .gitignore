@@ -42,9 +42,8 @@ Thumbs.db
 *.onnx.tar.xz
 *.rvc4.tar.xz
 
-# Keep the baseline ONNX model and NNArchive in version control
-!/conversion/baseline_onnx/
-!/conversion/baseline_onnx/**
+# Baseline model is supplied in workshop-inputs.zip
+/conversion/baseline_onnx/
 
 # Fresh runs stay local; preserve empty output directories
 /*/output/**
@@ -55,3 +54,7 @@ Thumbs.db
 # Checked-in reference runs, including logs and generated reports
 !/*/output_done/
 !/*/output_done/**
+
+# Training environment
+training/train-env/
+training/output/
