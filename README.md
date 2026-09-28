@@ -118,6 +118,27 @@ cd training
 Switch back to the main environment for the deployment stages (steps 3–6 in
 the workshop roadmap).
 
+## Live YOLO demo
+
+Run [live_demo.py](live_demo.py) from the workshop root with the main Python
+environment active. Its dependencies are included in `requirements.txt`.
+Requires a connected OAK camera, a web browser, and a YOLO NN archive
+(`.tar.xz`) compiled for your device with YOLO parser metadata. The preview
+uses the DepthAI visualizer to display camera frames and detection overlays.
+Camera frames are H.264-encoded on the device to reduce preview bandwidth.
+
+```bash
+python live_demo.py --model /path/to/model.tar.xz
+```
+
+Add `-d <device ip>` (or `--device`) to select a device by IP; omit it for
+automatic selection. Add `--fps 15` to set the camera preview and encoder frame
+rate (default: 30 FPS). Open `http://localhost:8082` in your browser and select the
+`Camera`, `Detections`, and `Controls` topics. Focus the visualizer and press `w` / `s` to increase /
+decrease confidence, `e` / `d` to increase / decrease IoU, or `q` to quit.
+Thresholds change by 0.05 within 0–1. The `Controls` overlay shows their current
+values and keyboard hints live on the frame.
+
 ## Reading the results
 
 Use the full evaluation's `result.json` for accuracy; the smaller visualization

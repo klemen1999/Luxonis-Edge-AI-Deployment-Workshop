@@ -21,7 +21,7 @@ Docker must be running and accessible to your user. The first invocation may
 pull the image. Repeat the PATH setup in each new shell, then follow the
 [analysis commands](../../analysis/README.md).
 
-Run from within the workshop folder. The wrappers mount that folder and `/tmp`
+Run from within the repository (including the workshop and ablation folders). The wrappers mount the repository and `/tmp`
 at their original absolute paths so the analyzer can pass file paths into the
 container. Keep input/output files within those locations. Files are written
 with your host user ID. Tool arguments and exit codes are passed through.
