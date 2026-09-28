@@ -10,7 +10,6 @@ import time
 from pathlib import Path
 from typing import Any
 
-from fiftyone.utils.coco import download_coco_dataset_split
 from luxonis_ml.data import LuxonisParser
 from luxonis_ml.enums import DatasetType
 from PIL import Image
@@ -56,6 +55,8 @@ def reset_directory(path: Path) -> None:
 
 
 def download_with_retries(destination: Path, **kwargs: Any) -> None:
+    from fiftyone.utils.coco import download_coco_dataset_split
+
     for attempt in range(4):
         try:
             download_coco_dataset_split(
