@@ -1,0 +1,26 @@
+INFO     Latest version: 0.3.4, Current version: 0.3.4            general.py:112
+INFO     Starting analysis                                       __main__.py:633
+INFO     Analyzing layer outputs                                 __main__.py:657
+WARNING  /mnt/drive2/luxonis_backup/onnx_qnn_benchmark/.venv/lib/ logging.py:108
+         python3.10/site-packages/modelconverter/platforms/rvc4/a               
+         nalyze.py:576: RuntimeWarning: invalid value encountered               
+         in scalar divide                                                       
+           cosine_sim = np.dot(onnx_output.flatten(),                           
+         dlc_output.flatten()) / (                                              
+                                                                                
+Analyzing samples ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:08:42
+INFO     Layer comparison results saved to                        analyze.py:566
+         /mnt/drive2/luxonis_backup/luxonis_deployment_workshop/w               
+         orkskop_material/analysis/output/int8_per_tensor/output/               
+         analysis/yolov8l/layer_comparison.csv                                  
+INFO     Analyzing layer cycles                                  __main__.py:662
+INFO     Preparing raw inputs for RVC4 analysis.                  analyze.py:249
+INFO     Raw inputs pushed to device at                           analyze.py:310
+         /data/modelconverter/yolov8l/input_list.txt                            
+INFO     Running DLC model to analyze layer cycles.               analyze.py:685
+INFO     Inferencing DLC model on device.                         analyze.py:597
+INFO     Raw outputs pulled from device to                        analyze.py:101
+         /mnt/drive2/luxonis_backup/luxonis_deployment_workshop/w               
+         orkskop_material/analysis/output/int8_per_tensor/output/               
+         analysis/yolov8l/output                                                
+INFO     Analysis finished successfully                          __main__.py:664

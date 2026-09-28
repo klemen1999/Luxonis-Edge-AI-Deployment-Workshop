@@ -1,0 +1,41 @@
+INFO     Latest version: 0.3.4, Current version: 0.3.4            general.py:112
+INFO     Running benchmarking for yolov8l.rvc4.tar         base_benchmark.py:329
+INFO     Running with configuration: {'profile':           base_benchmark.py:359
+         'balanced', 'runtime': 'dsp', 'num_images': 500,                       
+         'dai_benchmark': True, 'repetitions': 10,                              
+         'benchmark_time': 30, 'num_threads': 2,                                
+         'num_messages': 50, 'device_ip':                                       
+         '192.168.68.110', 'device_id': None,                                   
+         'device_monitor': True}                                                
+INFO     Trying to get input specs from the DLC file...         benchmark.py:582
+WARNING  Failed to read input specs from the DLC with error:    benchmark.py:585
+         Neither local nor remote `snpe-dlc-info` command is                    
+         available to read the DLC input specs.                                 
+INFO     Reading specs from the archive.                        benchmark.py:588
+INFO     Resolving correct type for input 'images'              benchmark.py:730
+INFO     model.inputs.images.dtype = DataType.UINT16            benchmark.py:731
+INFO     model.metadata.precision = DataType.INT8               benchmark.py:732
+INFO     Using the model.inputs value                           benchmark.py:745
+INFO     Resolved the type of 'images' to be 'UINT16'           benchmark.py:767
+INFO     Using RVC4 device on IP 192.168.68.110.                benchmark.py:615
+Time Elapsed (mm:ss) 00:30 / 00:30
+Benchmark Results for yolov8l.rvc4.tar 
+╭────────────────────┬────────────────╮
+│ metric             │ run 1          │
+├────────────────────┼────────────────┤
+│ profile            │ balanced       │
+│ runtime            │ dsp            │
+│ benchmark_time (s) │ 30             │
+│ num_threads        │ 2              │
+│ num_messages       │ 50             │
+│ device_ip          │ 192.168.68.110 │
+│ fps                │ 46.53          │
+│ latency (ms)       │ 41.49          │
+│ power_sys (W)      │ 5.84           │
+│ power_core (W)     │ 5.98           │
+│ dsp (%)            │ 74.46          │
+│ memory (MiB)       │ 1046.72        │
+│ cpu (%)            │ 18.56          │
+╰────────────────────┴────────────────╯
+INFO     Benchmark results saved to                        base_benchmark.py:309
+         yolov8l.rvc4.tar_benchmark_results.csv.                                

@@ -32,7 +32,7 @@ Thumbs.db
 /data/coco-validation-*/
 /data/selection.json
 
-# Model binaries (including the separately supplied baseline NNArchive)
+# Model binaries
 *.onnx
 *.dlc
 *.blob
@@ -42,15 +42,16 @@ Thumbs.db
 *.onnx.tar.xz
 *.rvc4.tar.xz
 
-# Generated stage outputs; keep the curated reference summaries
-/*/output/*
-!/analysis/output/RESULTS.md
-!/eval/output/RESULTS.md
-!/eval/output/RESULTS.json
-!/benchmarks/output/RESULTS.md
-!/benchmarks/output/RESULTS.json
+# Keep the baseline ONNX model and NNArchive in version control
+!/conversion/baseline_onnx/
+!/conversion/baseline_onnx/**
 
-# Published Pareto plot and its source values
-!/tools/output/pareto_fps_map.png
-!/tools/output/pareto_fps_map.csv
+# Fresh runs stay local; preserve empty output directories
+/*/output/**
+!/*/output/**/
+!/*/output/**/.gitkeep
 *.log
+
+# Checked-in reference runs, including logs and generated reports
+!/*/output_done/
+!/*/output_done/**

@@ -1,10 +1,8 @@
 # Model analysis
 
-Running the analyses is optional. Download the prepared analysis results and HTML
-plots from the [workshop Google Drive folder](https://drive.google.com/drive/folders/1QhlF0cnoNUDEOhW58JqMkf4cMUQ8LJkg?usp=sharing)
-and place them under `analysis/output/` to use the [results](output/RESULTS.md)
-and interactive views directly. SNPE tools are only needed to regenerate the
-analyses, not to view supplied plots or run `modelconverter visualize` on supplied CSVs.
+Running the analyses is optional. The prepared [results](output_done/RESULTS.md)
+and HTML plots are included under `analysis/output_done/`. SNPE tools are only
+needed to regenerate analyses. Commands below write new runs to `output/`.
 
 Analyze all six YOLOv8l conversions in `../conversion/output` using the 10 images
 in `../data/coco-validation-visualization/test/images`.
@@ -182,6 +180,6 @@ individual sections of the graph.
 
 ## Results
 
-See the [analysis results](output/RESULTS.md) for all six models' layer-cycle
+See the [analysis results](output_done/RESULTS.md) for all six models' layer-cycle
 comparison, input preprocessing costs, final output tensor differences, run
 provenance, and links to the interactive HTML views.

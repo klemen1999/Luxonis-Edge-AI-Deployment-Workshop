@@ -21,12 +21,14 @@ concurrent workload, so it is not necessarily `1000 / FPS`. These timings do
 not include the full LuxonisEval data-loading, parsing and scoring pipeline.
 
 
-Each model folder contains the original benchmark CSV, and console log.
+Reference CSVs and console logs are in `output_done/<variant>/`.
+Commands below write new runs to `output/<variant>/`.
 
 ## FP16 unoptimized
 
 ```bash
 (
+  mkdir -p output/fp16_unoptimized
   cd output/fp16_unoptimized
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/fp16_unoptimized/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -36,6 +38,7 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ```bash
 (
+  mkdir -p output/fp16_optimized
   cd output/fp16_optimized
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/fp16_optimized/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -45,6 +48,7 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ```bash
 (
+  mkdir -p output/int8_per_tensor
   cd output/int8_per_tensor
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/int8_per_tensor/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -54,6 +58,7 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ```bash
 (
+  mkdir -p output/int8_per_channel
   cd output/int8_per_channel
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/int8_per_channel/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -63,6 +68,7 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ```bash
 (
+  mkdir -p output/int8_int16
   cd output/int8_int16
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/int8_int16/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -72,6 +78,7 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ```bash
 (
+  mkdir -p output/int8_wrong_calibration
   cd output/int8_wrong_calibration
   modelconverter benchmark rvc4 --model-path "../../../conversion/output/int8_wrong_calibration/yolov8l.rvc4.tar.xz" --device-ip "192.168.68.110" --dai-benchmark --runtime dsp --profile balanced --benchmark-time 30 --num-threads 2 --num-messages 50 --device-monitor --save
 )
@@ -79,6 +86,6 @@ Each model folder contains the original benchmark CSV, and console log.
 
 ## Results
 
-See the [benchmark results](output/RESULTS.md) for all six models' FPS, latency,
+See the [benchmark results](output_done/RESULTS.md) for all six models' FPS, latency,
 system/core power, DSP utilization, memory usage, and CPU utilization.
-The same results are available as [JSON](output/RESULTS.json).
+The same results are available as [JSON](output_done/RESULTS.json).

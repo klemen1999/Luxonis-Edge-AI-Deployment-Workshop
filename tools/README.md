@@ -6,13 +6,14 @@ Run from the repository root using the workshop environment:
 workskop_material/env/bin/python workskop_material/tools/plot_pareto.py
 ```
 
-The script joins `eval/output/RESULTS.json` and `benchmarks/output/RESULTS.json`
+The script joins `eval/output_done/RESULTS.json` and `benchmarks/output_done/RESULTS.json`
 by variant name. It plots benchmark FPS on the horizontal axis and COCO
 mAP@0.50:0.95 (%) on the vertical axis. Both objectives are maximized.
 A point is dominated if another point is at least as good on both axes and
 strictly better on at least one. Equal points both remain on the frontier.
 
-Outputs are saved in `tools/output/`:
+New plots are saved in `tools/output/`. The checked-in reference plot and CSV
+are in [output_done/](output_done/):
 
 - `pareto_fps_map.png`: ready to use in slides.
 - `pareto_fps_map.csv`: joined values and Pareto membership, preserving precision.

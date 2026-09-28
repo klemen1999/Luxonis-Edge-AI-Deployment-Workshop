@@ -10,7 +10,8 @@ Each visualization run uses the 10-image visualization dataset with confidence
 threshold 0.25. Report accuracy from `result.json`; the separate
 `visualize_result.json` is a diagnostic result for that smaller, filtered run.
 Images are saved under each variant's `output/<variant>/visualizations/` folder.
-Rerunning writes to the same result and visualization paths.
+Rerunning writes to the same result and visualization paths. Reference runs are
+kept separately in `output_done/`.
 
 ## Baseline ONNX
 
@@ -64,6 +65,6 @@ luxonis_eval eval --config configs/int8_wrong_calibration_visualize.yaml --outpu
 
 ## Results
 
-See the [evaluation results](output/RESULTS.md) for all seven models on the
+See the [evaluation results](output_done/RESULTS.md) for all seven models on the
 300-image test dataset. Only full evaluation runs are included. 
-The same results are available as [JSON](output/RESULTS.json).
+The same results are available as [JSON](output_done/RESULTS.json).

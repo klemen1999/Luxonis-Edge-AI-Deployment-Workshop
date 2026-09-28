@@ -61,8 +61,8 @@ Clone or download this repository, then download the additional material from th
 Extract downloaded ZIP archives and merge their contents into the workshop root.
 Match the existing `data/`, `conversion/`, `eval/`, `analysis/`, and `benchmarks/`
 folders. If an archive has an enclosing folder, copy its contents rather than
-nesting that folder. Place supplied run outputs in the corresponding stage's
-`output/` folder.
+nesting that folder. Reference runs are included in each stage's `output_done/` folder.
+Place downloaded conversion artifacts in `conversion/output/`.
 
 Check that the baseline is at `conversion/baseline_onnx/yolov8l.onnx.tar.xz`.
 Keep this NNArchive compressed; conversion commands use it directly. Model
@@ -94,7 +94,7 @@ python data/prepare_workshop_datasets.py
 Replace the example device addresses in commands and configs with your RVC4's
 address. Verify passwordless root SSH access and run device jobs sequentially.
 
-Layer analysis is optional: use the supplied reports under `analysis/output/`,
+Layer analysis is optional: use the supplied reports under `analysis/output_done/`,
 or follow the [analysis setup and commands](analysis/README.md#setup-before-running-analysis)
 to regenerate them. Regeneration requires the converted DLCs, matching modified
 ONNX files, visualization images, and SNPE tools on the host and device. The
@@ -146,12 +146,11 @@ runs are diagnostic. Layer comparisons explain numerical changes and compute
 costs, while benchmarks measure throughput and latency separately from the
 evaluation pipeline. Compare these measurements together when selecting a model.
 
-The existing [analysis summary](analysis/output/RESULTS.md) and
-[benchmark summary](benchmarks/output/RESULTS.md) provide reference results.
-Generated reports, plots, logs, model binaries, and dataset downloads are ignored
-by Git; download the supplied artifacts from Drive or regenerate them to follow
-links to individual run artifacts. The results
-summaries remain eligible for version control. Benchmark results are single-run
+The existing [analysis summary](analysis/output_done/RESULTS.md) and
+[benchmark summary](benchmarks/output_done/RESULTS.md) provide reference results.
+Reference reports, plots, logs, and summaries are tracked in `output_done/`.
+Commands write fresh runs to ignored `output/` folders. Conversion outputs and
+dataset downloads still come from Drive or are regenerated locally. Benchmark results are single-run
 measurements, so treat them as workshop observations rather than repeated-trial
 averages.
 

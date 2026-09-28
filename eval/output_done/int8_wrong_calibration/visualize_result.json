@@ -1,0 +1,23 @@
+{
+  "engine": "depthai",
+  "model_name": "yolov8l",
+  "metrics": [
+    {
+      "name": "BboxMeanAveragePrecision",
+      "values": {
+        "AP": 0.0,
+        "AP50": 0.0,
+        "AP75": 0.0,
+        "AP_small": 0.0,
+        "AP_medium": 0.0,
+        "AP_large": 0.0,
+        "AR1": 0.0,
+        "AR10": 0.0,
+        "AR100": 0.0,
+        "AR_small": 0.0,
+        "AR_medium": 0.0,
+        "AR_large": 0.0
+      }
+    }
+  ]
+}

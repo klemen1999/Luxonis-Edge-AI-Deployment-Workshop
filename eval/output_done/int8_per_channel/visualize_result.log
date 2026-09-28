@@ -1,0 +1,75 @@
+INFO     Setting up evaluation configuration.                         core.py:73
+INFO     depthai inference engine initialized.                   factories.py:46
+INFO     Setting up device connection...                   depthai_engine.py:272
+INFO     Connected to [RVC4]: Name: OAK-4-D - IP:          depthai_engine.py:284
+         192.168.68.110 - ID: 221513030                                         
+INFO     Loading NNArchive model from:                     depthai_engine.py:310
+         ../conversion/output/int8_per_channel/yolov8l.rvc                      
+         4.tar.xz                                                               
+INFO     Model input shape: (1, 640, 640, 3)               depthai_engine.py:346
+WARNING  /mnt/drive2/luxonis_backup/luxonis_deployment_workshop/w logging.py:108
+         orkskop_material/env/lib/python3.10/site-packages/luxoni               
+         s_ml/data/datasets/luxonis_dataset.py:685:                             
+         PerformanceWarning: Resolving the schema of a LazyFrame                
+         is a potentially expensive operation. Use                              
+         `LazyFrame.collect_schema()` to get the schema without                 
+         this warning.                                                          
+           if "sample_metadata" not in lazy_frame.schema:                       
+                                                                                
+INFO     Skipping host-side loader normalization for the        factories.py:252
+         DepthAI backend. NNArchive preprocessing is expected                   
+         to run on-device.                                                      
+WARNING  Classification task detected.              albumentations_engine.py:456
+         Classification tasks can be properly                                   
+         augmented only for multi-label tasks,                                  
+         where each class is tied to a bounding                                 
+         box. In such cases, the classes belonging                              
+         to bboxes falling outside the image are                                
+         removed. In other cases, the annotation is                             
+         kept as is.                                                            
+INFO     LuxonisLoader dataloader initialized with              factories.py:268
+         task_name=''.                                                          
+INFO     YOLOExtendedParser parser initialized.                 factories.py:100
+INFO     BboxMeanAveragePrecision metric initialized.           factories.py:124
+INFO     BBoxVisualizer visualizer initialized.                 factories.py:192
+INFO     Throughput metric initialized.                               core.py:92
+INFO     Running pipeline sanity check on one real sample.           core.py:266
+Running DEPTHAI inference (yolov8l)... ━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10/10 0:00:03
+WARNING  Throughput values are end-to-end pipeline measurements and  core.py:228
+         not isolated model-only benchmarks. Lower numbers than                 
+         modelconverter benchmark results are expected.                         
+INFO                                                                 core.py:231
+         ╭─────────────────────────────────────┬───────────────────╮            
+         │ Metric                              │             Value │            
+         ├─────────────────────────────────────┼───────────────────┤            
+         │ ============= SETTINGS ============ │                   │            
+         │ Model                               │           yolov8l │            
+         │ Engine                              │           DEPTHAI │            
+         │ =========== PERFORMANCE =========== │                   │            
+         │ Throughput                          │    2.75 samples/s │            
+         │ End-to-end Latency                  │  363.09 ms/sample │            
+         │ --------- STAGE BREAKDOWN --------- │                   │            
+         │ Inference                           │ 108.18 ms | 29.8% │            
+         │ Parsing                             │  15.85 ms |  4.4% │            
+         │ Metric Update                       │   0.33 ms |  0.1% │            
+         │ Metric Compute                      │   8.38 ms |  2.3% │            
+         │ Pipeline Overhead                   │ 230.35 ms | 63.4% │            
+         │ ============= QUALITY ============= │                   │            
+         │ ----- BboxMeanAveragePrecision ---- │                   │            
+         │ AP                                  │            65.27% │            
+         │ AP50                                │            76.41% │            
+         │ AP75                                │            74.41% │            
+         │ AP_small                            │            32.38% │            
+         │ AP_medium                           │            52.37% │            
+         │ AP_large                            │            87.53% │            
+         │ AR1                                 │            60.02% │            
+         │ AR10                                │            66.15% │            
+         │ AR100                               │            66.80% │            
+         │ AR_small                            │            33.70% │            
+         │ AR_medium                           │            53.79% │            
+         │ AR_large                            │            90.10% │            
+         ╰─────────────────────────────────────┴───────────────────╯            
+INFO     Visualizations saved to                                     core.py:371
+         '/mnt/drive2/luxonis_backup/luxonis_deployment_workshop/wor            
+         kskop_material/eval/output/int8_per_channel/visualizations'            
+         .                                                                      

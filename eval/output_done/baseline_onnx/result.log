@@ -1,0 +1,61 @@
+INFO     Setting up evaluation configuration.                         core.py:73
+INFO     onnx inference engine initialized.                      factories.py:46
+WARNING  /mnt/drive2/luxonis_backup/luxonis_deployment_workshop/w logging.py:108
+         orkskop_material/env/lib/python3.10/site-packages/luxoni               
+         s_ml/data/datasets/luxonis_dataset.py:685:                             
+         PerformanceWarning: Resolving the schema of a LazyFrame                
+         is a potentially expensive operation. Use                              
+         `LazyFrame.collect_schema()` to get the schema without                 
+         this warning.                                                          
+           if "sample_metadata" not in lazy_frame.schema:                       
+                                                                                
+WARNING  Classification task detected.              albumentations_engine.py:456
+         Classification tasks can be properly                                   
+         augmented only for multi-label tasks,                                  
+         where each class is tied to a bounding                                 
+         box. In such cases, the classes belonging                              
+         to bboxes falling outside the image are                                
+         removed. In other cases, the annotation is                             
+         kept as is.                                                            
+INFO     LuxonisLoader dataloader initialized with              factories.py:268
+         task_name=''.                                                          
+INFO     YOLOExtendedParser parser initialized.                 factories.py:100
+INFO     BboxMeanAveragePrecision metric initialized.           factories.py:124
+INFO     Visualization is disabled.                             factories.py:139
+INFO     Throughput metric initialized.                               core.py:92
+INFO     Running pipeline sanity check on one real sample.           core.py:266
+Running ONNX inference (yolov8l.onnx)... ━━━━━━━━━━━━━━━━━━━━━━━ 300/300 0:02:06
+WARNING  Throughput values are end-to-end pipeline measurements and  core.py:228
+         not isolated model-only benchmarks. Lower numbers than                 
+         modelconverter benchmark results are expected.                         
+INFO                                                                 core.py:231
+         ╭─────────────────────────────────────┬───────────────────╮            
+         │ Metric                              │             Value │            
+         ├─────────────────────────────────────┼───────────────────┤            
+         │ ============= SETTINGS ============ │                   │            
+         │ Model                               │      yolov8l.onnx │            
+         │ Engine                              │              ONNX │            
+         │ =========== PERFORMANCE =========== │                   │            
+         │ Throughput                          │    2.33 samples/s │            
+         │ End-to-end Latency                  │  429.33 ms/sample │            
+         │ --------- STAGE BREAKDOWN --------- │                   │            
+         │ Inference                           │ 401.15 ms | 93.4% │            
+         │ Parsing                             │   7.51 ms |  1.7% │            
+         │ Metric Update                       │   0.60 ms |  0.1% │            
+         │ Metric Compute                      │   7.36 ms |  1.7% │            
+         │ Pipeline Overhead                   │  12.72 ms |  3.0% │            
+         │ ============= QUALITY ============= │                   │            
+         │ ----- BboxMeanAveragePrecision ---- │                   │            
+         │ AP                                  │            59.47% │            
+         │ AP50                                │            74.03% │            
+         │ AP75                                │            64.96% │            
+         │ AP_small                            │            36.40% │            
+         │ AP_medium                           │            56.48% │            
+         │ AP_large                            │            73.91% │            
+         │ AR1                                 │            46.01% │            
+         │ AR10                                │            67.63% │            
+         │ AR100                               │            72.14% │            
+         │ AR_small                            │            49.06% │            
+         │ AR_medium                           │            70.46% │            
+         │ AR_large                            │            83.72% │            
+         ╰─────────────────────────────────────┴───────────────────╯            

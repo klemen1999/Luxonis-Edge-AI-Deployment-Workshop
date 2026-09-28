@@ -23,7 +23,7 @@ similar cycle totals. W8A16 used 56.52% more cycles than unoptimized FP16
 (the negative reduction above denotes an increase).
 
 These are sums of per-layer mean DSP cycle counts for these profiling runs,
-not end-to-end latency or FPS. Use the [benchmark results](../../benchmarks/output/RESULTS.md)
+not end-to-end latency or FPS. Use the [benchmark results](../../benchmarks/output_done/RESULTS.md)
 for throughput and latency. Bad calibration can change numerical outputs without
 providing a corresponding signal in cycle counts.
 
@@ -82,7 +82,7 @@ still cause confidence filtering, wrong classes, or failed IoU matches.
 
 Layer differences are diagnostics, not detection accuracy. The analyzer resizes
 images directly rather than applying evaluation letterboxing; use the
-[evaluation results](../../eval/output/RESULTS.md) for AP.
+[evaluation results](../../eval/output_done/RESULTS.md) for AP.
 
 ## Interactive visualizations
 

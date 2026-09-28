@@ -27,12 +27,12 @@ def indexed(rows, key):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--eval-results", type=Path, default=WORKSHOP / "eval/output/RESULTS.json"
+        "--eval-results", type=Path, default=WORKSHOP / "eval/output_done/RESULTS.json"
     )
     parser.add_argument(
         "--benchmark-results",
         type=Path,
-        default=WORKSHOP / "benchmarks/output/RESULTS.json",
+        default=WORKSHOP / "benchmarks/output_done/RESULTS.json",
     )
     parser.add_argument("--output-dir", type=Path, default=WORKSHOP / "tools/output")
     args = parser.parse_args()

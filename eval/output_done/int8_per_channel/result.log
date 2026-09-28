@@ -1,0 +1,71 @@
+INFO     Setting up evaluation configuration.                         core.py:73
+INFO     depthai inference engine initialized.                   factories.py:46
+INFO     Setting up device connection...                   depthai_engine.py:272
+INFO     Connected to [RVC4]: Name: OAK-4-D - IP:          depthai_engine.py:284
+         192.168.68.110 - ID: 221513030                                         
+INFO     Loading NNArchive model from:                     depthai_engine.py:310
+         ../conversion/output/int8_per_channel/yolov8l.rvc                      
+         4.tar.xz                                                               
+INFO     Model input shape: (1, 640, 640, 3)               depthai_engine.py:346
+WARNING  /mnt/drive2/luxonis_backup/luxonis_deployment_workshop/w logging.py:108
+         orkskop_material/env/lib/python3.10/site-packages/luxoni               
+         s_ml/data/datasets/luxonis_dataset.py:685:                             
+         PerformanceWarning: Resolving the schema of a LazyFrame                
+         is a potentially expensive operation. Use                              
+         `LazyFrame.collect_schema()` to get the schema without                 
+         this warning.                                                          
+           if "sample_metadata" not in lazy_frame.schema:                       
+                                                                                
+INFO     Skipping host-side loader normalization for the        factories.py:252
+         DepthAI backend. NNArchive preprocessing is expected                   
+         to run on-device.                                                      
+WARNING  Classification task detected.              albumentations_engine.py:456
+         Classification tasks can be properly                                   
+         augmented only for multi-label tasks,                                  
+         where each class is tied to a bounding                                 
+         box. In such cases, the classes belonging                              
+         to bboxes falling outside the image are                                
+         removed. In other cases, the annotation is                             
+         kept as is.                                                            
+INFO     LuxonisLoader dataloader initialized with              factories.py:268
+         task_name=''.                                                          
+INFO     YOLOExtendedParser parser initialized.                 factories.py:100
+INFO     BboxMeanAveragePrecision metric initialized.           factories.py:124
+INFO     Visualization is disabled.                             factories.py:139
+INFO     Throughput metric initialized.                               core.py:92
+INFO     Running pipeline sanity check on one real sample.           core.py:266
+Running DEPTHAI inference (yolov8l)... ━━━━━━━━━━━━━━━━━━━━━━━━━ 300/300 0:00:36
+WARNING  Throughput values are end-to-end pipeline measurements and  core.py:228
+         not isolated model-only benchmarks. Lower numbers than                 
+         modelconverter benchmark results are expected.                         
+INFO                                                                 core.py:231
+         ╭─────────────────────────────────────┬──────────────────╮             
+         │ Metric                              │            Value │             
+         ├─────────────────────────────────────┼──────────────────┤             
+         │ ============= SETTINGS ============ │                  │             
+         │ Model                               │          yolov8l │             
+         │ Engine                              │          DEPTHAI │             
+         │ =========== PERFORMANCE =========== │                  │             
+         │ Throughput                          │   8.01 samples/s │             
+         │ End-to-end Latency                  │ 124.80 ms/sample │             
+         │ --------- STAGE BREAKDOWN --------- │                  │             
+         │ Inference                           │ 95.92 ms | 76.9% │             
+         │ Parsing                             │ 14.91 ms | 11.9% │             
+         │ Metric Update                       │  0.37 ms |  0.3% │             
+         │ Metric Compute                      │  3.81 ms |  3.1% │             
+         │ Pipeline Overhead                   │  9.81 ms |  7.9% │             
+         │ ============= QUALITY ============= │                  │             
+         │ ----- BboxMeanAveragePrecision ---- │                  │             
+         │ AP                                  │           56.84% │             
+         │ AP50                                │           71.53% │             
+         │ AP75                                │           62.22% │             
+         │ AP_small                            │           34.78% │             
+         │ AP_medium                           │           52.72% │             
+         │ AP_large                            │           71.80% │             
+         │ AR1                                 │           44.64% │             
+         │ AR10                                │           64.18% │             
+         │ AR100                               │           66.84% │             
+         │ AR_small                            │           44.23% │             
+         │ AR_medium                           │           63.06% │             
+         │ AR_large                            │           78.95% │             
+         ╰─────────────────────────────────────┴──────────────────╯             
